@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ocarina of Time</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #101510;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    header {
+      padding: 20px 12px;
+      background: #1b2b1b;
+      border-bottom: 2px solid #65844b;
+    }
+
+    h1 {
+      margin: 0;
+      color: #d6e8a5;
+      font-size: clamp(20px, 4vw, 28px);
+    }
+
+    #status {
+      padding: 12px;
+      color: #d6e8a5;
+    }
+
+    #game {
+      width: 96%;
+      max-width: 960px;
+      aspect-ratio: 4 / 3;
+      margin: 0 auto;
+      background: black;
+      overflow: hidden;
+    }
+
+    #game canvas {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>The Legend of Zelda: Ocarina of Time</h1>
+    <p>Automatic Game Launcher</p>
+  </header>
+
+  <div id="status">Loading game…</div>
+  <div id="game"></div>
+
+  <script>
+    window.EJS_player = "#game";
+    window.EJS_core = "n64";
+    window.EJS_gameName =
+      "The Legend of Zelda: Ocarina of Time";
+
+    window.EJS_gameUrl =
+      "https://drive.google.com/uc?export=download&id=1c-i9r8wbvB7RXv0--XlGTGo3xKbmchbV";
+
+    window.EJS_pathtodata =
+      "https://cdn.emulatorjs.org/latest/data/";
+
+    window.EJS_startOnLoaded = true;
+
+    const loader = document.createElement("script");
+    loader.src = window.EJS_pathtodata + "loader.js";
+
+    loader.onload = function () {
+      document.getElementById("status").textContent =
+        "Emulator loaded. Starting game…";
+    };
+
+    loader.onerror = function () {
+      document.getElementById("status").textContent =
+        "Could not load the emulator. Check your connection.";
+    };
+
+    document.body.appendChild(loader);
+  </script>
+</body>
+</html>
